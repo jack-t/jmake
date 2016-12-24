@@ -79,4 +79,20 @@ class Build
 		named(what) # alias
 	end
 
+	def with_include_directory(what)
+		@instructions << BuildInstruction.new(8, "-I" + what.to_s)
+	end
+
+	def with_library(lib)
+		@instructions << BuildInstruction.new(17, "-l" + lib.to_s) # 17 because libraries must come after the compilation units that require them
+	end
+
+	def with_library_dir(directory)
+		@instructions << BuildInstruction.new(15, "-L" + directory.to_s) 
+	end
+
+	def with_option(option)
+		@instructions << BuildInstruction.new(VALUE, "-" + option)
+	end
+
 end

@@ -1,6 +1,6 @@
 load 'jmake.rb'
 
-system("mkdir obj > /dev/null")
+system("mkdir obj")
 
 each changed do |file|
 	build_just file do
@@ -11,6 +11,7 @@ end
 
 build do
 	objects
+	with_library :ncurses
 	as :exe
 	named :"jmake"
 end

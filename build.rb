@@ -1,6 +1,6 @@
 load 'jmake.rb'
 
-system("mkdir obj")
+system("mkdir obj > /dev/null")
 
 each changed do |file|
 	build_just file do
@@ -12,5 +12,5 @@ end
 build do
 	objects
 	as :exe
-	named :jmake
-end 
+	named :"jmake"
+end

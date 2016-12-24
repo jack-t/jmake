@@ -69,10 +69,10 @@ class Build
 	end
 
 	def named(what)
-		if what.start_with?(config.obj_dir + "/") # '/' is safe on all platform in Ruby.
-			what = change_ext(what, @config.obj_file_ext)
+		if what.to_s.start_with?(config.obj_dir + "/") # '/' is safe on all platforms in Ruby.
+			what = change_ext(what.to_s, @config.obj_file_ext)
 		end
-		@instructions << BuildInstruction.new(14, "-o " + what)
+		@instructions << BuildInstruction.new(14, "-o " + what.to_s)
 	end
 
 	def into(what)
